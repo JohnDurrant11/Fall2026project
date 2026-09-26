@@ -30,7 +30,7 @@ class Program
         }
         Console.WriteLine($"The sum is: {sum_Number}");
 
-        int average_Number = sum_Number / added_Numbers.Count;
+        float average_Number = ((float)sum_Number) / added_Numbers.Count;
         Console.WriteLine($"The average is: {average_Number}");
 
         foreach (int number in added_Numbers)
