@@ -10,7 +10,7 @@ class Fraction
         _top = 1;
         _bottom = 1;
 
-        Console.WriteLine($"{_top}/{_bottom}");
+        //Console.WriteLine($"{_top}/{_bottom}");
     }
 
     public Fraction(int top)
