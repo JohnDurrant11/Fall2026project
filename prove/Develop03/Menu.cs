@@ -20,10 +20,10 @@ class Menu
             else if (choice == 2)
             {
                 Console.Clear();
-                Reference DisplayReferences = new Reference();
-                Scripture DisplayScirpture = new Scripture();
-                int userChoice = DisplayReferences.DisplayReferences();
-                DisplayScirpture.runScriptureGame(userChoice);
+                Reference displayReferences = new Reference();
+                Scripture displayScripture = new Scripture();
+                int userChoice = displayReferences.DisplayReferences();
+                displayScripture.RunScriptureGame(userChoice);
             }
             else if (choice == 3)
             {
@@ -60,11 +60,4 @@ class Menu
         Reference newReference = new Reference();
         newReference.NewScriptureReference();
     }
-
-    private void MemorizeScripture()
-    {
-        
-    }
-
-
 }
