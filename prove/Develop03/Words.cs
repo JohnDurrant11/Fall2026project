@@ -1,18 +1,17 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using System.Linq;
 
 class Words
 {
-    public List<string> splitVerses = new List<string>();
+    private List<string> _splitVerses = new List<string>();
 
     public void SplitVerses(string verses)
     {
-        splitVerses.Clear();
+        _splitVerses.Clear();
         foreach (string word in verses.Split(" "))
         {
-            splitVerses.Add(word);
+            _splitVerses.Add(word);
         }
     }
 
@@ -22,24 +21,36 @@ class Words
         
         int hideRange = random.Next(1, 5);
 
-        if (hideRange > splitVerses.Count)
+        if (hideRange > _splitVerses.Count)
         {
-            Console.WriteLine($"{splitVerses}");
+            Console.WriteLine($"{_splitVerses}");
         }
         else
         {
             for (int i = 0; i < hideRange; i++)
             {
-                int randomWordIndex = random.Next(0, splitVerses.Count);
-                string wordToHide = splitVerses[randomWordIndex];
+                int randomWordIndex = random.Next(0, _splitVerses.Count);
+                string wordToHide = _splitVerses[randomWordIndex];
                 string hiddenWord = new string('_', wordToHide.Length);
-                splitVerses[randomWordIndex] = hiddenWord;
+                _splitVerses[randomWordIndex] = hiddenWord;
             }
         }
     }
 
-    public bool IsAllHIdden()
+    public string GetDisplayText()
     {
-        return splitVerses.All(word => word.Contains("_"));
+        return string.Join(" ", _splitVerses);
+    }
+
+    public bool IsAllHidden()
+    {
+        foreach (string word in _splitVerses)
+        {
+            if (!word.Contains("_"))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
