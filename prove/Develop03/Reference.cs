@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 class Reference
 {
-    private List<string> References = new List<string>();
+    private List<string> _references = new List<string>();
     public void NewScriptureReference()
     {
         Console.WriteLine("What is the reference for the scripture you would like to add? (ie. 2 Nephi 5:17, Matthew 7:3-5)");
@@ -13,9 +13,9 @@ class Reference
         newScripture.NewScriptureVerses(addedReference);
     }
 
-    private void RetreaveReferences()
+    private void RetrieveReferences()
     {
-        References.Clear();
+        _references.Clear();
         string filename = "Scriptures.csv";
 
         string[] lines = File.ReadAllLines(filename);
@@ -26,11 +26,11 @@ class Reference
 
             string[] parts = line.Split('|');
 
-            References.Add(parts[0]);
+            _references.Add(parts[0]);
             
         }
         int index = 1;
-        foreach (string reference in References)
+        foreach (string reference in _references)
         {
             Console.WriteLine($"{index}. {reference}");
             index++;
@@ -53,15 +53,15 @@ class Reference
 
     public int DisplayReferences()
     {
-        RetreaveReferences();
+        RetrieveReferences();
 
-        int totalReferences = References.Count;
+        int totalReferences = _references.Count;
         int choice = SelectReference(totalReferences);
         Console.WriteLine($"DEBUG: totalReferences is {totalReferences}");
         if (choice != -1)
         {
             Console.Clear();
-            Console.WriteLine($"Please enjoy memorizing {References[choice - 1]}.");
+            Console.WriteLine($"Please enjoy memorizing {_references[choice - 1]}.");
         }
         return choice;
     }
